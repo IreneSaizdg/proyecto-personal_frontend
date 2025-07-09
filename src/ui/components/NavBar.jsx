@@ -5,26 +5,34 @@ import { LogoutButton } from "./LogoutButton"
 // NAVBAR
 export const NavBar = () => {
   return (
-    <nav className="navbar">
-      <ul className="nav-list">
-        {/* Rutas públicas */}
-        <li><NavLink to="/" className="nav-link">Home</NavLink></li>
-        <li><NavLink to="/login" className="nav-link">Login</NavLink></li>
-        <li><NavLink to="/register" className="nav-link">Registro</NavLink></li>
+  <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top px-3">
+    <div className="container-fluid">
+      <NavLink to="/" className="nav-link navbar-brand fw-bold fs-3">Arkiv</NavLink>
+      
+      <button className="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
 
-        {/* Rutas privadas */}
-        <li><NavLink to="/dashboard" className="nav-link">User Dashboard</NavLink></li>
-        <li><NavLink to="/dashboard/create" className="nav-link">Crear Recurso</NavLink></li>
-        <li><NavLink to="/dashboard/favourites" className="nav-link"> Mis Favoritos</NavLink></li>
-        <li><NavLink to="/dashboard/my-resources" className="nav-link"> Mis Recursos</NavLink></li>
-        <li><NavLink to="/dashboard/profile" className="nav-link">Mi Perfil</NavLink></li>
+      <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
+        <ul className="navbar-nav ms-auto text-center d-flex gap-2">
+          <li><NavLink to="/" className="nav-link">Inicio</NavLink></li>
+          <li><NavLink to="/login" className="nav-link">Login</NavLink></li>
+          <li><NavLink to="/register" className="nav-link">Registro</NavLink></li>
+          
+          <li><NavLink to="/user-dashboard" className="nav-link">User Dashboard</NavLink></li>
+          <li><NavLink to="/user-dashboard/create" className="nav-link">Crear Recurso</NavLink></li>
+          <li><NavLink to="/user-dashboard/favourites" className="nav-link"> Mis Favoritos</NavLink></li>
+          <li><NavLink to="/user-dashboard/my-resources" className="nav-link"> Mis Recursos</NavLink></li>
+          <li><NavLink to="/user-dashboard/profile" className="nav-link">Mi Perfil</NavLink></li>
+          
+          <li><NavLink to="/admin-dashboard" className="nav-link">Admin Dashboard</NavLink></li>
+          <li><NavLink to="/admin-dashboard/users" className="nav-link">Admin Usuarios</NavLink></li>
+          <LogoutButton/>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-        {/* Rutas admin */}
-        <li><NavLink to="/admin" className="nav-link">Admin Dashboard</NavLink></li>
-        <li><NavLink to="/admin/users" className="nav-link">Admin Usuarios</NavLink></li>
-
-        <li><LogoutButton/></li>
-      </ul>
-    </nav>
+    
   )
 }

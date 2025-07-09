@@ -5,10 +5,15 @@ import { ResourcesGallery } from '../../resources/components/ResourcesGallery'
 
 export const MyResourcesPage = () => {
   return (
-    <main>
-      <p>Estás en Mis Recursos (indicador provisional)</p>
-      
-      <HeaderHero/>
+    <main>      
+      <HeaderHero
+        title="Your posts"
+        subtitle="check your collection"
+      />
+      <div className="d-flex justify-content-center mb-5">
+        <button type="button" className="btn btn-warning btn-lg">Create a new card +</button>
+      </div>
+
       <section>
         <SearchBarResourcesForm/>
         <ResourcesGallery/>

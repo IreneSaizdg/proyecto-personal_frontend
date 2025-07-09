@@ -6,9 +6,10 @@ import { ResourcesGallery } from '../../resources/components/ResourcesGallery'
 export const MyFavouritesPage = () => {
   return (
     <main>
-      <p>Estás en Mis Favoritos (indicador provisional)</p>
-      
-      <HeaderHero/>
+      <HeaderHero
+        title="Favourites 🤍"
+        subtitle="check your saved favs"
+      />
       
       <section>
         <SearchBarResourcesForm/>

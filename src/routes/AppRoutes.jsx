@@ -1,7 +1,7 @@
 // IMPORTS
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router'
-import { HomePage, LoginPage, RegisterPage } from '../pages/publics'
+import { CardDetailPage, HomePage, LoginPage, RegisterPage } from '../pages/publics'
 import { CreateCardPage, MyFavouritesPage, MyResourcesPage, MyProfilePage, UserDashboardPage } from '../pages/private'
 import { AdminDashboardPage, AdminUsersPage } from '../pages/admin'
 import { MainLayout } from '../ui/components/MainLayout'
@@ -19,9 +19,10 @@ export const AppRoutes = () => {
         <Route index element={<HomePage/>} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/register' element={<RegisterPage />} />
+        <Route path='/card-detail' element={<CardDetailPage/>} />
 
         {/* Rutas privadas (usuario) */}
-        <Route path="/dashboard">
+        <Route path="/user-dashboard">
           <Route index element={<UserDashboardPage />} />
           <Route path='create' element={<CreateCardPage />} />
           <Route path='my-resources' element={<MyResourcesPage />} />
@@ -30,7 +31,7 @@ export const AppRoutes = () => {
         </Route>
 
         {/* Rutas admin */}
-        <Route path='/admin'>
+        <Route path='/admin-dashboard'>
           <Route index element={<AdminDashboardPage />} />
           <Route path='users' element={<AdminUsersPage />} />
         </Route>

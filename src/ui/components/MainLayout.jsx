@@ -11,9 +11,10 @@ export const MainLayout = () => {
   return (
     <>
       <Header />
-      <hr />
-      <Outlet />
-      <hr />
+      <div className="flex-grow-1 min-vh-90">
+        <Outlet />
+        
+      </div>  
       <Footer />
     </>
   )

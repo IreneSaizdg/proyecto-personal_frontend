@@ -5,13 +5,11 @@ import { ProfileCard } from '../../users/components/ProfileCard'
 export const MyProfilePage = () => {
   return (
     <main>
-      <p>Estás en Home Page (indicador provisional)</p>
-      
-      <HeaderHero/>
-        <section>
-          <ProfileCard/>
-          <button>Editar mi perfil</button>
-        </section>
+      <HeaderHero
+        title="Profile"
+        subtitle="manage your info"
+      />
+      <ProfileCard/>
     </main>
   )
 }

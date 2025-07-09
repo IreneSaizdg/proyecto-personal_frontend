@@ -5,12 +5,13 @@ import { CreateResourceForm } from '../../resources/components/CreateResourceFor
 export const CreateCardPage = () => {
   return (
     <main>
-      <p>Estás Create Card/ Resource (indicador provisional)</p>
-      
-      <HeaderHero/>
-        <section>
-          <CreateResourceForm/>
-        </section>
+      <HeaderHero
+        title="Create Card"
+        subtitle="Add it to your collection"
+      />
+    <section>
+      <CreateResourceForm/>
+    </section>
     </main>
   )
 }

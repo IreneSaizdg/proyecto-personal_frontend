@@ -4,13 +4,12 @@ import { HeaderHero } from "../../ui/components/HeaderHero"
 
 export const LoginPage = () => {
   return (
-    <main>
-      <p>Estás en Login (indicador provisional)</p>
-      
-      <HeaderHero/>
-        <section>
-          <LoginForm/>
-        </section>
+    <main>      
+      <HeaderHero
+        title="Login"
+        subtitle="into your account :)"
+      />
+      <LoginForm/>
     </main>
   )
 }

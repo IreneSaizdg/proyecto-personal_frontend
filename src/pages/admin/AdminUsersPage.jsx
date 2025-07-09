@@ -7,15 +7,16 @@ import { SearchBarUserForm } from '../../users/components/SearchBarUserForm'
 import { UsersGallery } from '../../users/components/UsersGallery'
 
 export const AdminUsersPage = () => {
- return (
-      <main>
-        <p>Estás en Admin Users (indicador provisional)</p>
-        
-        <HeaderHero/>
-        <section>
-          <SearchBarUserForm/>
-          <UsersGallery/>
-        </section>
-      </main>
-    )
+  return (
+    <main>
+      <HeaderHero
+      title="Admin"
+      subtitle="manage users"
+      />
+      <section>
+        <SearchBarUserForm/>
+        <UsersGallery/>
+      </section>
+    </main>
+  )
 }

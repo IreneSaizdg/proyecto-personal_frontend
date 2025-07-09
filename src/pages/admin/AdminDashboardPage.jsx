@@ -5,14 +5,16 @@ import { SearchBarResourcesForm } from '../../resources/components/SearchBarReso
 
 export const AdminDashboardPage = () => {
   return (
-      <main>
-        <p>Estás en Admin Dashboard (indicador provisional)</p>
-        
-        <HeaderHero/>
-        <section>
-          <SearchBarResourcesForm/>
-          <ResourcesGallery/>
-        </section>
-      </main>
+    <main>
+      <HeaderHero
+      title="Admin"
+      subtitle="manage posts"
+      />
+      
+      <section>
+        <SearchBarResourcesForm/>
+        <ResourcesGallery/>
+      </section>
+    </main>
     )
 }
