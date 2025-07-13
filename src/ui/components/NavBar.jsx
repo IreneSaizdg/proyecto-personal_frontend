@@ -1,9 +1,13 @@
 // IMPORTS
 import { NavLink } from "react-router"
 import { LogoutButton } from "../../auth/components/LogoutButton"
+import { useUser } from "../../contexts/userContext";
+
 
 // NAVBAR
 export const NavBar = () => {
+  const { user, logout } = useUser();
+  
   return (
   <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top px-3">
     <div className="container-fluid">
@@ -15,19 +19,34 @@ export const NavBar = () => {
 
       <div className="collapse navbar-collapse " id="navbarNavAltMarkup">
         <ul className="navbar-nav ms-auto text-center d-flex gap-2">
-          <li><NavLink to="/" className="nav-link">Inicio</NavLink></li>
-          <li><NavLink to="/login" className="nav-link">Login</NavLink></li>
-          <li><NavLink to="/register" className="nav-link">Registro</NavLink></li>
+          <li><NavLink to="/" className="nav-link"> Homepage </NavLink></li>
+
+          {!user && (
+            <>
+              <li><NavLink to="/login" className="nav-link"> Login </NavLink></li>
+              <li><NavLink to="/register" className="nav-link"> Register</NavLink></li>
+            </>
+          )}
+
+          {user?.role === "user" && (
+            <>
+              <li><NavLink to="/user" className="nav-link"> Community </NavLink></li>
+              <li><NavLink to="/user/create" className="nav-link"> Create Resource </NavLink> </li>
+              <li><NavLink to="/user/my-resources" className="nav-link"> My resources </NavLink></li>
+              <li><NavLink to="/user/favourites" className="nav-link"> My favourites </NavLink></li>
+              <li><NavLink to="/user/profile" className="nav-link"> My profile </NavLink></li>
+            </>
+          )}
+
+          {user?.role === "admin" && (
+            <>
+              <li><NavLink to="/admin-dashboard" className="nav-link">Admin Dashboard</NavLink></li>
+              <li><NavLink to="/admin-dashboard/users" className="nav-link">Manage Users</NavLink></li>
+            </>
+          )}
+
+          {user && (<LogoutButton />)}
           
-          <li><NavLink to="/user" className="nav-link">User Dashboard</NavLink></li>
-          <li><NavLink to="/user/create" className="nav-link">Crear Recurso</NavLink></li>
-          <li><NavLink to="/user/favourites" className="nav-link"> Mis Favoritos</NavLink></li>
-          <li><NavLink to="/user/my-resources" className="nav-link"> Mis Recursos</NavLink></li>
-          <li><NavLink to="/user/profile" className="nav-link">Mi Perfil</NavLink></li>
-          
-          <li><NavLink to="/admin-dashboard" className="nav-link">Admin Dashboard</NavLink></li>
-          <li><NavLink to="/admin-dashboard/users" className="nav-link">Admin Usuarios</NavLink></li>
-          <LogoutButton/>
         </ul>
       </div>
     </div>
