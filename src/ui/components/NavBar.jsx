@@ -1,6 +1,6 @@
 // IMPORTS
 import { NavLink } from "react-router"
-import { LogoutButton } from "./LogoutButton"
+import { LogoutButton } from "../../auth/components/LogoutButton"
 
 // NAVBAR
 export const NavBar = () => {
@@ -19,11 +19,11 @@ export const NavBar = () => {
           <li><NavLink to="/login" className="nav-link">Login</NavLink></li>
           <li><NavLink to="/register" className="nav-link">Registro</NavLink></li>
           
-          <li><NavLink to="/user-dashboard" className="nav-link">User Dashboard</NavLink></li>
-          <li><NavLink to="/user-dashboard/create" className="nav-link">Crear Recurso</NavLink></li>
-          <li><NavLink to="/user-dashboard/favourites" className="nav-link"> Mis Favoritos</NavLink></li>
-          <li><NavLink to="/user-dashboard/my-resources" className="nav-link"> Mis Recursos</NavLink></li>
-          <li><NavLink to="/user-dashboard/profile" className="nav-link">Mi Perfil</NavLink></li>
+          <li><NavLink to="/user" className="nav-link">User Dashboard</NavLink></li>
+          <li><NavLink to="/user/create" className="nav-link">Crear Recurso</NavLink></li>
+          <li><NavLink to="/user/favourites" className="nav-link"> Mis Favoritos</NavLink></li>
+          <li><NavLink to="/user/my-resources" className="nav-link"> Mis Recursos</NavLink></li>
+          <li><NavLink to="/user/profile" className="nav-link">Mi Perfil</NavLink></li>
           
           <li><NavLink to="/admin-dashboard" className="nav-link">Admin Dashboard</NavLink></li>
           <li><NavLink to="/admin-dashboard/users" className="nav-link">Admin Usuarios</NavLink></li>

@@ -1,31 +1,57 @@
-import React, { createContext, useEffect } from 'react';
-import { buildSearchUrl } from '../api/fetchCall';
-import { useFetch } from  '../hooks/useFetch'
+import React, { createContext, useContext, useState, useEffect } from "react";
+import {
+  saveUserToLocalStorage,
+  getUserFromLocalStorage,
+  clearUserFromLocalStorage,
+} from "../utils/localStorage";
 
 
 
-// CONTEXTO (creación)
-export const UserContext = createContext(null);
+// CREAR CONTEXTO
+export const UserContext = createContext();
 
-// PROVIDER: user (envuelve la app)
+
+// PROVEEDOR DEL CONTEXTO
 export const UserProvider = ({ children }) => {
-  const endpoint = buildSearchUrl("users", "", "/1")
-  const { data, loading, error, fetchData } = useFetch(endpoint, "GET");
-  
-  //Coprobación de data en consola
-  useEffect(()=>{
-    data ? console.log("data", data) : console.log("No existe este usuario");
-  }, [data])
-  
-  // Para que se ejecute sólo cuando sucede un cambio concreto como cuando cambie un estado del componente, o cuando se carge por primera vez el componente ello utilizamos un useEffect()
-  useEffect(() => {
-      fetchData()
-  }, [])
+  const initialData = getUserFromLocalStorage();
 
+  const [user, setUser] = useState(initialData?.user || null);
+  const [token, setToken] = useState(initialData?.token || null);
+
+  // Efecto para sincronizar con localStorage cada vez que cambia user o token
+  useEffect(() => {
+    if (user && token) {
+      saveUserToLocalStorage({ user, token });
+    } else {
+      clearUserFromLocalStorage();
+    }
+  }, [user, token]);
+
+  // Función login: guarda user y token en el estado
+  const login = (userData, jwtToken) => {
+    setUser(userData);
+    setToken(jwtToken);
+  };
+
+  // Función logout: limpia todo
+  const logout = () => {
+    setUser(null);
+    setToken(null);
+    clearUserFromLocalStorage();
+  };
 
   return (
-    <UserContext.Provider value={{ data, loading, error }}>
+    <UserContext.Provider value={{ user, token, login, logout }}>
       {children}
     </UserContext.Provider>
   );
+};
+
+// Custom hook
+export const useUser = () => {
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error("useUser debe usarse dentro de UserProvider");
+  }
+  return context;
 };

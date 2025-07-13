@@ -1,13 +1,15 @@
 import React from 'react'
 
-export const ResourceCard = ({ 
-    image="https://i.pinimg.com/736x/28/a8/a4/28a8a4a286a76717dbebd4dd3ea744bb.jpg", 
-    title="Sample Card", 
-    author="Sample autor", 
-    onAddFav, 
-    onDelete, 
-    onEdit 
-  }) => {
+export const ResourceCard = ({card})=> {
+  const {
+    image,
+    title,
+    username
+  }=card
+
+    const onAddFav=()=>{}; 
+    const onDelete=()=>{};
+    const onEdit=()=>{}
 
   return (
     <article className="card rounded-4 overflow-hidden">
@@ -17,7 +19,7 @@ export const ResourceCard = ({
 
       <div className="card-body">
         <h5 className="card-title">{title}</h5>
-        <p className="card-text text-muted">Autor: {author}</p>
+        <p className="card-text text-muted">Autor: {username}</p>
 
         <div className="d-flex justify-content-between">
           <button onClick={onAddFav} className="btn btn-outline-dark btn-sm">🤍 AddFav</button>

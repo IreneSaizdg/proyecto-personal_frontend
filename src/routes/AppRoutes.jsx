@@ -22,7 +22,7 @@ export const AppRoutes = () => {
         <Route path='/card-detail' element={<CardDetailPage/>} />
 
         {/* Rutas privadas (usuario) */}
-        <Route path="/user-dashboard">
+        <Route path="/user">
           <Route index element={<UserDashboardPage />} />
           <Route path='create' element={<CreateCardPage />} />
           <Route path='my-resources' element={<MyResourcesPage />} />
