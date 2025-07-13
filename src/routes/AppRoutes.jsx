@@ -5,6 +5,8 @@ import { CardDetailPage, HomePage, LoginPage, RegisterPage } from '../pages/publ
 import { CreateCardPage, MyFavouritesPage, MyResourcesPage, MyProfilePage, UserDashboardPage } from '../pages/private'
 import { AdminDashboardPage, AdminUsersPage } from '../pages/admin'
 import { MainLayout } from '../ui/components/MainLayout'
+import { PrivateRoute } from './PrivateRoute'
+
 
 
 
@@ -22,18 +24,22 @@ export const AppRoutes = () => {
         <Route path='/card-detail' element={<CardDetailPage/>} />
 
         {/* Rutas privadas (usuario) */}
-        <Route path="/user">
-          <Route index element={<UserDashboardPage />} />
-          <Route path='create' element={<CreateCardPage />} />
-          <Route path='my-resources' element={<MyResourcesPage />} />
-          <Route path='favourites' element={<MyFavouritesPage />} />
-          <Route path='profile' element={<MyProfilePage />} />
+        <Route element={<PrivateRoute allowedRoles={['user']} />}>
+          <Route path="/user">
+            <Route index element={<UserDashboardPage />} />
+            <Route path='create' element={<CreateCardPage />} />
+            <Route path='my-resources' element={<MyResourcesPage />} />
+            <Route path='favourites' element={<MyFavouritesPage />} />
+            <Route path='profile' element={<MyProfilePage />} />
+          </Route>
         </Route>
 
         {/* Rutas admin */}
-        <Route path='/admin-dashboard'>
-          <Route index element={<AdminDashboardPage />} />
-          <Route path='users' element={<AdminUsersPage />} />
+        <Route element={<PrivateRoute allowedRoles={['admin']} />}>
+          <Route path='/admin-dashboard'>
+            <Route index element={<AdminDashboardPage />} />
+            <Route path='users' element={<AdminUsersPage />} />
+          </Route>
         </Route>
 
         {/* Ruta por defecto: redirigir a Home si no encuentra nada */}
