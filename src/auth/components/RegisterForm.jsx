@@ -53,6 +53,7 @@ export const RegisterForm = () => {
             className="form-control"
             id="registerName"
             placeholder="Enter a username"
+            name="name"
             value={ formData.name }
             onChange={handleChange}
           />
@@ -65,6 +66,7 @@ export const RegisterForm = () => {
             className="form-control"
             id="registerEmail"
             placeholder="Enter a valid email"
+            name="email"
             value={ formData.email }
             onChange={handleChange}
           />
@@ -77,6 +79,7 @@ export const RegisterForm = () => {
             className="form-control"
             id="registerPassword"
             placeholder="Create a password"
+            name="password"
             value={ formData.password } 
             onChange={handleChange}
           />
