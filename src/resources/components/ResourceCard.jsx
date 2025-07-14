@@ -1,18 +1,40 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router";
 
-export const ResourceCard = ({card})=> {
-  const {
-    image,
-    title,
-    username
-  }=card
 
-    const onAddFav=()=>{}; 
-    const onDelete=()=>{};
-    const onEdit=()=>{}
+
+
+export const ResourceCard = ({ card }) => {
+  const { resource_id, image, title, username } = card;
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/resources/card-detail/${resource_id}`);
+  };
+
+  const onAddFav = (e) => {
+    e.stopPropagation(); //Evita que los clicks en botones disparen el handleClick delpadre
+    console.log("Añadir a favoritos:", resource_id);
+  };
+
+  const onDelete = (e) => {
+    e.stopPropagation();
+    console.log("Eliminar recurso:", resource_id);
+  };
+
+  const onEdit = (e) => {
+    e.stopPropagation();
+    console.log("Editar recurso:", resource_id);
+  };
+
 
   return (
-    <article className="card rounded-4 overflow-hidden">
+    <article
+      className="card rounded-4 overflow-hidden"
+      onClick={handleClick}
+      style={{ cursor: "pointer" }}
+    >
+      
       <div className="ratio ratio-1x1 bg-secondary">
         <img src={image} className="img-fluid object-fit-cover" alt={title} />
       </div>

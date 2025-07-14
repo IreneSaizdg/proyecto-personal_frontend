@@ -31,7 +31,6 @@ export const HomePage = () => {
       )}
 
       <section>
-        <SearchBarResourcesForm />
         <ResourcesGallery />
       </section>
     </main>
