@@ -18,7 +18,6 @@ export const MyResourcesPage = () => {
       </div>
 
       <section>
-        <SearchBarResourcesForm/>
         <ResourcesGallery/>
       </section>
     </main>

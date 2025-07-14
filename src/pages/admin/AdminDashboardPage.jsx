@@ -12,7 +12,6 @@ export const AdminDashboardPage = () => {
       />
       
       <section>
-        <SearchBarResourcesForm/>
         <ResourcesGallery/>
       </section>
     </main>

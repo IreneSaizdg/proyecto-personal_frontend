@@ -14,7 +14,6 @@ export const AdminUsersPage = () => {
       subtitle="manage users"
       />
       <section>
-        <SearchBarUserForm/>
         <UsersGallery/>
       </section>
     </main>

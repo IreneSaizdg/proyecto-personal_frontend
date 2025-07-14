@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router'
 export const UserDashboardPage = () => {
   const { user } = useUser();
   const navigate = useNavigate();
-  // {/* Provisional */} const {userprov,isRegister}=useContext(UserContext)
 
   return (
     <main>
@@ -23,9 +22,6 @@ export const UserDashboardPage = () => {
       </div>
 
       <section>
-        {/* Provisional */} {/* {JSON.stringify(user)} */}
-
-        <SearchBarResourcesForm/>
         <ResourcesGallery/>
       </section>
     </main>

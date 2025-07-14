@@ -16,11 +16,8 @@ export const ResourcesGallery = () => {
     try {
       setSearchTerm(tag); // Guardar lo que escribió el user
       const data = await fetchCall(
-        `http://localhost:5000/api/v1/resources/search/${encodeURIComponent(tag)}`,
+        `http://localhost:5000/api/v1/resources/search/${encodeURIComponent(tag)}`, //Codifica la URL para que sea compatible con el navegador
         'GET',
-        {
-          Authorization: `Bearer ${user.token}`,
-        }
       );
       setSearchResults(data);
     } catch (err) {
@@ -36,9 +33,6 @@ export const ResourcesGallery = () => {
         const data = await fetchCall(
           'http://localhost:5000/api/v1/resources',
           'GET',
-          {
-            Authorization: `Bearer ${user.token}`,
-          }
         );
         setSearchResults(data);
       } catch (err) {
@@ -47,12 +41,14 @@ export const ResourcesGallery = () => {
     };
 
     fetchAllResources();
-  }, [user.token]); // Se ejecuta una sola vez al montar, cuando el token esté disponible
+  }, []); // Se ejecuta una sola vez al montar, cuando el token esté disponible
 
   return (
-    <div className="container">
+    <>
       <SearchBarResourcesForm onSearch={handleSearch} />
-      <ResourcesGrid cards={searchResults} collectionTitle={searchTerm} />
-    </div>
+      <div className="container">
+        <ResourcesGrid cards={searchResults} collectionTitle={searchTerm} />
+      </div>
+    </>
   );
 };
