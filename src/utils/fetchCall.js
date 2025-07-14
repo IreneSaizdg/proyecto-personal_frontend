@@ -15,6 +15,7 @@ export const fetchCall = async (url, method = "GET", headers = {}, body = null, 
         options.body = JSON.stringify(body);
     }
 
+
     try {
         const response = await fetch(url, options);
         const text = await response.text();
@@ -24,8 +25,8 @@ export const fetchCall = async (url, method = "GET", headers = {}, body = null, 
         if (!text) {
             throw new Error("Respuesta vacía del servidor");
         }
-
         let json;
+
         try {
             json = JSON.parse(text);
         } catch (error) {
