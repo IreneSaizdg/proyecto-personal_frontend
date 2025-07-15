@@ -17,6 +17,14 @@ export const UserProvider = ({ children }) => {
 
   const [user, setUser] = useState(initialData?.user || null);
   const [token, setToken] = useState(initialData?.token || null);
+  const [isLoading, setIsLoading] = useState(true); 
+
+   useEffect(() => {
+    setUser(initialData?.user || null);
+    setToken(initialData?.token || null);
+    setIsLoading(false); //cuando carga localStorage, desactiva el loading
+  }, []);
+
 
   // Efecto para sincronizar con localStorage cada vez que cambia user o token
   useEffect(() => {
@@ -39,6 +47,8 @@ export const UserProvider = ({ children }) => {
     setToken(null);
     clearUserFromLocalStorage();
   };
+
+  if (isLoading) return null; // evita renderizar mientras carga datos
 
   return (
     <UserContext.Provider value={{ user, token, login, logout }}>
